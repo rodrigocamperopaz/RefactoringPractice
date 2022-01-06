@@ -6,47 +6,30 @@
         {
             Console.WriteLine("Here we are!");
 
-            IList<Item> Items = new List<Item>{
-                new Item {Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20},
-                new Item {Name = "Aged Brie", SellIn = 2, Quality = 0},
-                new Item {Name = "Elixir of the Mongoose", SellIn = 5, Quality = 7},
-                new Item {Name = "Sulfuras, Hand of Ragnaros", SellIn = 0, Quality = 80},
-                new Item {Name = "Sulfuras, Hand of Ragnaros", SellIn = -1, Quality = 80},
-                new Item
-                {
-                    Name = "Backstage passes to a Pokemon Gym concert",
-                    SellIn = 15,
-                    Quality = 20
-                },
-                new Item
-                {
-                    Name = "Backstage passes to a Pokemon Gym concert",
-                    SellIn = 10,
-                    Quality = 49
-                },
-                new Item
-                {
-                    Name = "Backstage passes to a Pokemon Gym concert",
-                    SellIn = 5,
-                    Quality = 49
-                },
-				// this conjured item does not work properly yet
-				new Item {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
+            IList<Item> items = new List<Item> {
+                new Item("+5 Dexterity Vest", 10, 20),
+                new Item("Aged Brie", 2, 0),
+                new Item("Elixir of the Mongoose", 5, 7),
+                new Item("Sulfuras, Hand of Ragnaros", 0, 80),
+                new Item("Sulfuras, Hand of Ragnaros", -1, 80),
+                new Item("Backstage passes to a Pokemon Gym concert", 15, 20),
+                new Item("Backstage passes to a Pokemon Gym concert", 10, 49),
+                new Item("Backstage passes to a Pokemon Gym concert", 5, 49),
+				new Item("Conjured Mana Cake", 3, 6)
             };
 
-            var app = new GameInventory(Items);
+            GameInventory gameInventory = new GameInventory(items);
 
-
-            for (var i = 0; i < 31; i++)
+            for (int i = 0; i < 31; i++)
             {
-                Console.WriteLine("-------- day " + i + " --------");
+                Console.WriteLine($"-------- day {i} --------");
                 Console.WriteLine("name, sellIn, quality");
-                for (var j = 0; j < Items.Count; j++)
+                for (int j = 0; j < items.Count; j++)
                 {
-                    System.Console.WriteLine(Items[j]);
+                    Console.WriteLine(items[j]);
                 }
-                Console.WriteLine("");
-                app.UpdateQuality();
+                Console.WriteLine();
+                gameInventory.UpdateQuality();
             }
         }
     }
