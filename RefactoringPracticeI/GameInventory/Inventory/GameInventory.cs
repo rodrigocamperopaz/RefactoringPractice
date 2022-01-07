@@ -46,15 +46,7 @@ namespace RefactoringExerciseI.Inventory
 
                     if (_items[index].Name == ItemConstants.BackstagePasses)
                     {
-                        if (_items[index].SellIn < 11 && _items[index].Quality < ItemConstants.MaxItemQuality)
-                        {
-                            _items[index].Quality = _items[index].Quality + 1;
-                        }
-
-                        if (_items[index].SellIn < 6 && _items[index].Quality < ItemConstants.MaxItemQuality)
-                        {
-                            _items[index].Quality = _items[index].Quality + 1;
-                        }
+                        BackstagePassLogic(index);
                     }
                 }
             }
@@ -98,6 +90,19 @@ namespace RefactoringExerciseI.Inventory
         private void ItemDepreciation(int index)
         {
             _items[index].SellIn = _items[index].SellIn - 1;
+        }
+
+        private void BackstagePassLogic(int index)
+        {
+            if (_items[index].SellIn < 11 && _items[index].Quality < ItemConstants.MaxItemQuality)
+            {
+                _items[index].Quality = _items[index].Quality + 1;
+            }
+
+            if (_items[index].SellIn < 6 && _items[index].Quality < ItemConstants.MaxItemQuality)
+            {
+                _items[index].Quality = _items[index].Quality + 1;
+            }
         }
     }
 }
