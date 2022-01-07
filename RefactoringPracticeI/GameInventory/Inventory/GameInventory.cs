@@ -35,14 +35,14 @@ namespace RefactoringExerciseI.Inventory
             {
                 if (_items[index].Quality > ItemConstants.MinItemQuality && _items[index].Name != ItemConstants.Sulfuras)
                 {
-                    _items[index].Quality = _items[index].Quality - 1;
+                    _items[index].Quality--;
                 }
             }
             else
             {
                 if (_items[index].Quality < ItemConstants.MaxItemQuality)
                 {
-                    _items[index].Quality = _items[index].Quality + 1;
+                    _items[index].Quality++;
 
                     if (_items[index].Name == ItemConstants.BackstagePasses)
                     {
@@ -60,7 +60,7 @@ namespace RefactoringExerciseI.Inventory
                 {
                     if (_items[index].Quality > ItemConstants.MinItemQuality && _items[index].Name != ItemConstants.Sulfuras)
                     {
-                        _items[index].Quality = _items[index].Quality - 1;
+                        _items[index].Quality--;
                     }
                 }
                 else
@@ -83,25 +83,25 @@ namespace RefactoringExerciseI.Inventory
         {
             if (_items[index].Quality < ItemConstants.MaxItemQuality)
             {
-                _items[index].Quality = _items[index].Quality + 1;
+                _items[index].Quality++;
             }
         }
 
         private void ItemDepreciation(int index)
         {
-            _items[index].SellIn = _items[index].SellIn - 1;
+            _items[index].SellIn--;
         }
 
         private void BackstagePassLogic(int index)
         {
             if (_items[index].SellIn < 11 && _items[index].Quality < ItemConstants.MaxItemQuality)
             {
-                _items[index].Quality = _items[index].Quality + 1;
+                _items[index].Quality++;
             }
 
             if (_items[index].SellIn < 6 && _items[index].Quality < ItemConstants.MaxItemQuality)
             {
-                _items[index].Quality = _items[index].Quality + 1;
+                _items[index].Quality++;
             }
         }
     }
