@@ -4,82 +4,76 @@ namespace RefactoringExerciseI
 {
     public class GameInventory
     {
-        IList<Item> Items;
-        public GameInventory(IList<Item> Items)
+        IList<Item> _Items;
+        public GameInventory(IList<Item> items)
         {
-            this.Items = Items;
+            _Items = items;
         }
 
         public void UpdateQuality()
         {
-            for (var i = 0; i < Items.Count; i++)
+            for (int i = 0; i < _Items.Count; i++)
             {
-                if (Items[i].Name != "Aged Brie" && Items[i].Name != "Backstage passes to a Pokemon Gym concert")
+                if (_Items[i].Name != "Aged Brie" && _Items[i].Name != "Backstage passes to a Pokemon Gym concert")
                 {
-                    if (Items[i].Quality > 0)
+                    if (_Items[i].Quality > 0)
                     {
-                        if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
+                        if (_Items[i].Name != "Sulfuras, Hand of Ragnaros")
                         {
-                            Items[i].Quality = Items[i].Quality - 1;
+                            _Items[i].Quality--;
                         }
                     }
                 }
                 else
                 {
-                    if (Items[i].Quality < 50)
+                    if (_Items[i].Quality < 50)
                     {
-                        Items[i].Quality = Items[i].Quality + 1;
+                        _Items[i].Quality++;
 
-                        if (Items[i].Name == "Backstage passes to a Pokemon Gym concert")
+                        if (_Items[i].Name == "Backstage passes to a Pokemon Gym concert")
                         {
-                            if (Items[i].SellIn < 11)
+                            if (_Items[i].SellIn < 11 && _Items[i].Quality < 50)
                             {
-                                if (Items[i].Quality < 50)
-                                {
-                                    Items[i].Quality = Items[i].Quality + 1;
-                                }
+                                _Items[i].Quality++;
                             }
 
-                            if (Items[i].SellIn < 6)
+                            if (_Items[i].SellIn < 6 && _Items[i].Quality < 50)
                             {
-                                if (Items[i].Quality < 50)
-                                {
-                                    Items[i].Quality = Items[i].Quality + 1;
-                                }
+                                _Items[i].Quality++;
                             }
                         }
                     }
                 }
 
-                if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
+                if (_Items[i].Name != "Sulfuras, Hand of Ragnaros")
                 {
-                    Items[i].SellIn = Items[i].SellIn - 1;
+                    _Items[i].SellIn--;
                 }
 
-                if (Items[i].SellIn < 0)
+                if (_Items[i].SellIn < 0)
                 {
-                    if (Items[i].Name != "Aged Brie")
+                    if (_Items[i].Name != "Aged Brie")
                     {
-                        if (Items[i].Name != "Backstage passes to a Pokemon Gym concert")
+                        if (_Items[i].Name != "Backstage passes to a Pokemon Gym concert")
                         {
-                            if (Items[i].Quality > 0)
+                            if (_Items[i].Quality > 0)
                             {
-                                if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
+                                if (_Items[i].Name != "Sulfuras, Hand of Ragnaros")
                                 {
-                                    Items[i].Quality = Items[i].Quality - 1;
+                                    _Items[i].Quality--;
                                 }
                             }
                         }
                         else
                         {
-                            Items[i].Quality = Items[i].Quality - Items[i].Quality;
+                            _Items[i].Quality = 0;
                         }
                     }
                     else
                     {
-                        if (Items[i].Quality < 50)
+                        if (_Items[i].Quality < 50)
                         {
-                            Items[i].Quality = Items[i].Quality + 1;
+                            _Items[i].Quality++;
                         }
                     }
                 }
