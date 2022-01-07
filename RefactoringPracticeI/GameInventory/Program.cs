@@ -42,13 +42,13 @@ namespace RefactoringExerciseI
             var app = new GameInventory(Items);
 
 
-            for (var i = 0; i < 31; i++)
+            for (int index = 0; index < 31; index++)
             {
-                Console.WriteLine("-------- day " + i + " --------");
+                Console.WriteLine($"-------- day {index} --------");
                 Console.WriteLine("name, sellIn, quality");
-                for (var j = 0; j < Items.Count; j++)
+                for (int pivot = 0; pivot < Items.Count; pivot++)
                 {
-                    System.Console.WriteLine(Items[j]);
+                    Console.WriteLine(Items[pivot]);
                 }
                 Console.WriteLine("");
                 app.UpdateQuality();
