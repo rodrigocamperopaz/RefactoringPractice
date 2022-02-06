@@ -1,6 +1,4 @@
-﻿using RefactoringExerciseI.Constants;
-
-namespace RefactoringExerciseI.Inventory
+﻿namespace RefactoringExerciseI.Inventory
 {
     public class GameInventory
     {
@@ -15,93 +13,63 @@ namespace RefactoringExerciseI.Inventory
         {
             for (var index = 0; index < _items.Count; index++)
             {
-                ItemsQualityHandling(index);
-
-                if (_items[index].Name != ItemConstants.Sulfuras)
+                if (_items[index].Name != "Aged Brie" && _items[index].Name != "Backstage passes to a Pokemon Gym concert")
                 {
-                    ItemDepreciation(index);
-                }
-
-                if (_items[index].SellIn < 0)
-                {
-                    ItemsWear(index);
-                }
-            }
-        }
-
-        private void ItemsQualityHandling(int index)
-        {
-            if (_items[index].Name != ItemConstants.AgedBrie && _items[index].Name != ItemConstants.BackstagePasses)
-            {
-                if (_items[index].Quality > ItemConstants.MinItemQuality && _items[index].Name != ItemConstants.Sulfuras)
-                {
-                    _items[index].Quality--;
-                }
-            }
-            else
-            {
-                if (_items[index].Quality < ItemConstants.MaxItemQuality)
-                {
-                    _items[index].Quality++;
-
-                    if (_items[index].Name == ItemConstants.BackstagePasses)
-                    {
-                        BackstagePassLogic(index);
-                    }
-                }
-            }
-        }
-
-        private void ItemsWear(int index)
-        {
-            if (_items[index].Name != ItemConstants.AgedBrie)
-            {
-                if (_items[index].Name != ItemConstants.BackstagePasses)
-                {
-                    if (_items[index].Quality > ItemConstants.MinItemQuality && _items[index].Name != ItemConstants.Sulfuras)
+                    if (_items[index].Quality > 0 && _items[index].Name != "Sulfuras, Hand of Ragnaros")
                     {
                         _items[index].Quality--;
                     }
                 }
                 else
                 {
-                    OneUseItem(index);
+                    if (_items[index].Quality < 50)
+                    {
+                        _items[index].Quality++;
+
+                        if (_items[index].Name == "Backstage passes to a Pokemon Gym concert")
+                        {
+                            if (_items[index].SellIn < 11 && _items[index].Quality < 50)
+                            {
+                                _items[index].Quality++;
+                            }
+
+                            if (_items[index].SellIn < 6 && _items[index].Quality < 50)
+                            {
+                                _items[index].Quality++;
+                            }
+                        }
+                    }
                 }
-            }
-            else
-            {
-                HandleItemDecay(index);
-            }
-        }
 
-        private void OneUseItem(int index)
-        {
-            _items[index].Quality = _items[index].Quality - _items[index].Quality;
-        }
+                if (_items[index].Name != "Sulfuras, Hand of Ragnaros")
+                {
+                    _items[index].SellIn--;
+                }
 
-        private void HandleItemDecay(int index)
-        {
-            if (_items[index].Quality < ItemConstants.MaxItemQuality)
-            {
-                _items[index].Quality++;
-            }
-        }
-
-        private void ItemDepreciation(int index)
-        {
-            _items[index].SellIn--;
-        }
-
-        private void BackstagePassLogic(int index)
-        {
-            if (_items[index].SellIn < 11 && _items[index].Quality < ItemConstants.MaxItemQuality)
-            {
-                _items[index].Quality++;
-            }
-
-            if (_items[index].SellIn < 6 && _items[index].Quality < ItemConstants.MaxItemQuality)
-            {
-                _items[index].Quality++;
+                if (_items[index].SellIn < 0)
+                {
+                    if (_items[index].Name != "Aged Brie")
+                    {
+                        if (_items[index].Name != "Backstage passes to a Pokemon Gym concert")
+                        {
+                            if (_items[index].Quality > 0 && _items[index].Name != "Sulfuras, Hand of Ragnaros")
+                            {
+                                _items[index].Quality--;
+                            }
+                        }
+                        else
+                        {
+                            _items[index].Quality = _items[index].Quality - _items[index].Quality;
+                        }
+                    }
+                    else
+                    {
+                        if (_items[index].Quality < 50)
+                        {
+                            _items[index].Quality++;
+                        }
+                    }
+                }
             }
         }
     }
