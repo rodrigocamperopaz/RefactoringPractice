@@ -14,7 +14,7 @@ namespace RefactoringExerciseI
                 new Item {Name = "Aged Brie", SellIn = 2, Quality = 0},
                 new Item {Name = "Elixir of the Mongoose", SellIn = 5, Quality = 7},
                 new Item {Name = "Sulfuras, Hand of Ragnaros", SellIn = 0, Quality = 80},
-                new Item {Name = "Sulfuras, Hand of Ragnaros", SellIn = -1, Quality = 80},
+                new Item {Name = "Sulfuras, Hand of sRagnaros", SellIn = -1, Quality = 80},
                 new Item
                 {
                     Name = "Backstage passes to a Pokemon Gym concert",
