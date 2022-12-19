@@ -1,4 +1,5 @@
-﻿using RefactoringExerciseI.Inventory;
+﻿using RefactoringExerciseI.Constants;
+using RefactoringExerciseI.Inventory;
 
 namespace RefactoringExerciseI
 {
@@ -10,30 +11,31 @@ namespace RefactoringExerciseI
             Console.WriteLine("Here we are!");
 
             IList<Item> Items = new List<Item>{
-                new Item {Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20},
-                new Item {Name = "Aged Brie", SellIn = 2, Quality = 0},
-                new Item {Name = "Elixir of the Mongoose", SellIn = 5, Quality = 7},
-                new Item {Name = "Sulfuras, Hand of Ragnaros", SellIn = 0, Quality = 80},
-                new Item {Name = "Sulfuras, Hand of sRagnaros", SellIn = -1, Quality = 80},
+                new Item {Name = ItemConstants.Dexterity, SellIn = 10, Quality = 20},
+                new Item {Name = ItemConstants.AgedBrie, SellIn = 2, Quality = 0},
+                new Item {Name = ItemConstants.Mongoose, SellIn = 5, Quality = 7},
+                new Item {Name = ItemConstants.Sulfuras, SellIn = 0, Quality = 80},
+                new Item {Name = ItemConstants.Sulfuras, SellIn = -1, Quality = 80},
                 new Item
                 {
-                    Name = "Backstage passes to a Pokemon Gym concert",
+                    Name = ItemConstants.BackstagePasses,
                     SellIn = 15,
                     Quality = 20
                 },
                 new Item
                 {
-                    Name = "Backstage passes to a Pokemon Gym concert",
+                    Name = ItemConstants.BackstagePasses,
                     SellIn = 10,
                     Quality = 49
                 },
                 new Item
                 {
-                    Name = "Backstage passes to a Pokemon Gym concert",
+                    Name = ItemConstants.BackstagePasses,
                     SellIn = 5,
                     Quality = 49
                 },
-				new Item {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
+				// this conjured item does not work properly yet
+				new Item {Name = ItemConstants.ConjuredManaCake, SellIn = 3, Quality = 6}
             };
 
             var app = new GameInventory(Items);
